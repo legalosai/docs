@@ -1,0 +1,28 @@
+---
+title: "Changelog"
+description: "Product updates and improvements from the LegalOS team."
+---
+
+<Update label="July 10, 2026" description="Week of July 6 – July 10">
+
+## New features
+
+**USCIS filing-fee Stripe invoicing.** Staff can now build itemized filing-fee invoices for a petition directly from the admin sidebar and send the client a single Stripe invoice with a hosted invoice page and pay link.
+
+- Build a breakdown from the seeded USCIS filing-fee catalog via a dropdown, plus add editable custom line items.
+- All amounts are staff-editable before sending, so you can reflect the current fee schedule or one-off adjustments per petition.
+- The recipient signatory is resolved using the existing employer-signatory logic, and the Stripe customer's email stays in sync with the selected recipient.
+- Sent (unpaid) invoices can be voided from the admin — the invoice is voided in Stripe and the local record moves to a `void` state.
+- Send, finalize, and void calls are idempotent, so a double-click or retry can't create duplicate customers or invoices.
+
+Filing-fee invoicing is gated on a Stripe API key. Until it's configured, the card shows a graceful "not configured" state and no invoicing actions run.
+
+## Updates
+
+- **Filing group in the admin sidebar.** The Filing Fee Invoice card lives in the sidebar's Filing group, and sidebar navigation now scrolls the target section into view below the sticky top nav.
+
+## Coming soon
+
+- Paid-status webhook and a client-facing invoice to-do so applicants can see and pay their filing-fee invoice from their portal.
+
+</Update>
