@@ -3,6 +3,28 @@ title: "Changelog"
 description: "Product updates and improvements from the LegalOS team."
 ---
 
+<Update label="July 13, 2026" description="Week of July 13">
+
+## New features
+
+**E-3 petitions on platform.** You can now run E-3 (Australian specialty occupation) petitions end-to-end in LegalOS, alongside H-1B and other supported visa types.
+
+- Full E-3 intake for both employer and beneficiary, including a dedicated current immigration status step, specialty occupation details, and processing options.
+- Australian-nationality validation on the beneficiary side to catch eligibility issues before submission.
+- Auto-generation of the E-3 form set (I-129, LCA, G-28, I-907) with E-3–specific I-129 mapping: classification set to E-3, basis 2.b, requested action 4.c, and Part 3 populated from the beneficiary's current status.
+- Filings are routed to the Vermont Service Center (VSC) by default.
+- No evidence module is required for E-3, so the workflow skips it automatically.
+
+## Updates
+
+- **Shared address component for H-1B secondary worksites.** The H-1B secondary work-location address now uses the same standardized address input as the rest of the platform, for a more consistent experience and cleaner data.
+
+## Bug fixes
+
+- **H-1B second worksite toggle now persists.** Unchecking "second physical work location" on an H-1B petition now correctly removes the secondary worksite instead of leaving stale data behind.
+
+</Update>
+
 <Update label="July 10, 2026" description="Week of July 6 – July 10">
 
 ## New features
