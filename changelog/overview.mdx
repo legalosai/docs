@@ -39,9 +39,13 @@ description: "Product updates and improvements from the LegalOS team."
 
 Filing-fee invoicing is gated on a Stripe API key. Until it's configured, the card shows a graceful "not configured" state and no invoicing actions run.
 
+**Company Support Letter for every visa type.** The employer-signed Company Support Letter (previously labeled "H-1B Support Letter") is now available in the Form Signing company-signatory section for every visa type, including O-1A, EB-1A, and any future visa types — not just H-1B.
+
 ## Updates
 
 - **Filing group in the admin sidebar.** The Filing Fee Invoice card lives in the sidebar's Filing group, and sidebar navigation now scrolls the target section into view below the sticky top nav.
+- **Graceful release upgrades.** When a new version of LegalOS ships, the app no longer auto-reloads mid-session. Instead, an update banner appears so you can finish what you're doing before refreshing — a stale-page error will surface the banner instead of silently reloading and losing an in-progress form. Version checks now run on mount and when you refocus the tab, rather than polling every minute.
+- **Additive auto-fill for visa history and passport countries.** Auto-fill for U.S. visa history and passport countries now merges into existing entries instead of overwriting them, so previously entered rows are preserved when new data is added.
 
 ## Coming soon
 
