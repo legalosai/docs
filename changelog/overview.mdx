@@ -3,6 +3,32 @@ title: "Changelog"
 description: "Product updates and improvements from the LegalOS team."
 ---
 
+<Update label="July 17, 2026" description="Week of July 13 – July 17">
+
+## New features
+
+**TN (USMCA professional) petitions.** LegalOS now supports TN petitions for Canadian and Mexican professionals under the USMCA, with two filing routes modeled as distinct visa types so you can pick the right path per case.
+
+- **TN at the port of entry** for Canadian nationals — no I-129 required.
+- **TN change of status / extension** through USCIS — files the I-129 plus the new Trade Agreement Supplement.
+- Split beneficiary and employer intake with a dedicated profession/qualification step.
+- Auto-generation of the I-129 Trade Agreement Supplement is wired into signing and signature-location flows alongside the base I-129.
+
+**Online vs. mail USCIS filing fees.** The admin Filing Fee Invoice card now has a toggle for online vs. mail filing, and the seeded fee catalog carries both amounts where USCIS charges different rates. Switching modes re-prices only the catalog lines you haven't edited, so custom line items stay intact.
+
+## Updates
+
+- **Anvil form field auto-fit.** Long names, company names, and addresses now shrink to fit inside single-line fields on generated Anvil forms instead of clipping at the edges. Applies across every visa type.
+- **Documents Needed checklist.** The documents-needed checklist now populates from bundle uploads before a section is marked complete, and bundle sections have their own Mark Complete action so progress reflects reality as you go.
+- **Graceful version-skew handling on every route.** The update banner and stale-client refresh prompt are now mounted app-wide, so any route can surface a refresh prompt when a new build ships mid-session instead of silently failing a server action. Stale-client errors are also reported to Sentry.
+
+## Bug fixes
+
+- **Stable evidence strength ratings.** Per-bundle reported strength for critical role and original contributions no longer changes between views. Ratings are now cached against the evidence input and only re-evaluated when that input actually changes.
+- **Download all evidence.** Fixed a crash in the admin "Download all evidence" action when an entry's source was stored as a provenance object rather than a plain string.
+
+</Update>
+
 <Update label="July 13, 2026" description="Week of July 13">
 
 ## New features
