@@ -3,6 +3,27 @@ title: "Changelog"
 description: "Product updates and improvements from the LegalOS team."
 ---
 
+<Update label="July 24, 2026" description="Week of July 20 – July 24">
+
+## New features
+
+**L-1A petitions on platform.** LegalOS now supports L-1A (intracompany transferee, executive or managerial) petitions end-to-end alongside the rest of the supported visa types.
+
+- Full L-1A intake for employer and beneficiary, with visa-specific evidence criteria seeded automatically when a new L-1A case is created.
+- I-129 auto-generation is wired to the L Classification Supplement, so the L-1A form set is populated with the same one-click flow as other visa types.
+
+**Filing document sharing and mark-as-filed.** The filing-copies and receipt-notice sharing flows now support multiple recipients and record when a petition has been filed with USCIS.
+
+- Send a combined filing email to multiple recipients at once — each recipient is tracked as a separate send.
+- A new **Mark as filed** action records the filing date on the petition so downstream steps and reporting reflect real filing status.
+
+## Updates
+
+- **Deep links to incomplete review fields.** The review step's **Incomplete Sections** list now deep-links to the exact field that needs attention, so you can jump straight to what's missing instead of scrolling the section. A coverage guardrail keeps every incomplete field anchor-addressable as new fields ship.
+- **Safer account creation.** Owner accounts can no longer be silently assigned to the wrong company during creation. A server-side guard validates the selected company, and the client company picker no longer defaults to an unintended value — accounts created without a company route to onboarding instead.
+
+</Update>
+
 <Update label="July 20, 2026" description="Week of July 20">
 
 ## New features
