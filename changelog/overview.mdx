@@ -3,6 +3,14 @@ title: "Changelog"
 description: "Product updates and improvements from the LegalOS team."
 ---
 
+<Update label="July 27, 2026" description="Week of July 27">
+
+## Bug fixes
+
+- **RFE notice uploads now process reliably in production.** Uploading an RFE (Request for Evidence) notice PDF was failing to extract text on production workers, blocking downstream RFE analysis. PDF text extraction now runs cleanly end-to-end so RFE uploads complete and analysis kicks off as expected.
+
+</Update>
+
 <Update label="July 24, 2026" description="Week of July 20 – July 24">
 
 ## New features
