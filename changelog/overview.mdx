@@ -3,6 +3,14 @@ title: "Changelog"
 description: "Product updates and improvements from the LegalOS team."
 ---
 
+<Update label="August 4, 2026" description="Week of August 3">
+
+## Bug fixes
+
+- **Send-for-signature works again for returning signatories.** Sending employer forms to a company signatory who already had a LegalOS profile was failing with a database error, blocking the signing flow. The signatory-provisioning path now correctly looks up existing memberships and reuses active owners without a redundant write, so send-for-signature completes cleanly and the signatory receives their set-password invite and signing link as expected. Brand-new signatories were never affected.
+
+</Update>
+
 <Update label="August 3, 2026" description="Week of August 3">
 
 ## Updates
