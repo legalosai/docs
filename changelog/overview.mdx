@@ -3,6 +3,19 @@ title: "Changelog"
 description: "Product updates and improvements from the LegalOS team."
 ---
 
+<Update label="August 3, 2026" description="Week of August 3">
+
+## Updates
+
+- **Short case codes for every petition.** Every petition now has a short 5-character case code (drawn from an unambiguous alphabet — no `0`, `O`, `1`, `I`, or `L`) that's shown as the user-facing case identifier and works as a route key alongside the existing UUID. Existing petitions are backfilled automatically, so you can share and reference a case with a code that's easy to read out loud without collisions across the platform.
+
+## Bug fixes
+
+- **Letter comments no longer disappear on save.** Recommendation-letter comment threads are now stored in Postgres as the source of truth, with the `.docx` acting purely as the wire format the editor speaks. A save can never silently erase a comment: resolve and delete are explicit actions, and comments whose anchor paragraph is deleted surface in the workspace side panel as orphaned instead of vanishing.
+- **Intake save reliability.** Fixed an issue where beneficiary intake saves could fail to persist under certain conditions.
+
+</Update>
+
 <Update label="July 27, 2026" description="Week of July 27">
 
 ## Bug fixes
