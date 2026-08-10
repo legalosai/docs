@@ -3,6 +3,47 @@ title: "Changelog"
 description: "Product updates and improvements from the LegalOS team."
 ---
 
+<Update label="August 10, 2026" description="Week of August 10">
+
+## New features
+
+**Ball-in-court case status across the platform.** Every petition now carries a unified case-status snapshot that tells you at a glance who a case is waiting on and what it's waiting for. Cases show a single display status (`action-needed`, `in-progress`, `in-review`, `filed`, `approved`, `denied`, or `closed`) alongside a "waiting on" party, so you never have to reconcile mismatched labels across the dashboard, admin list, and case detail.
+
+- Ball-in-court badges surface the current owner (client, LegalOS, USCIS) on every case row and header.
+- A staff work queue rolls up every case where LegalOS is on the hook, ordered by what's outstanding.
+- Cases past the signature window automatically flip back to LegalOS with a clear next action, instead of stalling under "waiting on client".
+- Snapshots recompute on every status-relevant write and are reconciled hourly as a safety net.
+
+**Production MCP server for Claude.** LegalOS's Model Context Protocol server is now available in production, so Claude and other MCP clients can read case status, requirements, and intake data on your behalf.
+
+- Install with a single click from Claude — no API keys, client IDs, or manual credentials to copy.
+- Auth failures now return specific diagnostics ("client not registered", "grant missing", "session expired") instead of a generic "unavailable", so you can tell whether to reconnect or ask an admin.
+- Default read-only grants (`cases:read`, `requirements:read`, `intake:read`) are provisioned automatically for approved clients.
+
+## Updates
+
+- **RFE notices work on scanned PDFs.** RFE notice uploads now transcribe the notice with vision-based OCR instead of relying on a text layer, so scans, faxes, and image-only PDFs analyze end-to-end. Text-based PDFs continue to work as before.
+- **Cleaner evidence sidebar.** Removed the "Get Legal Guidance" card from the evidence sidebar. Legal guidance still lives on the review and strategy surfaces where it's actionable.
+
+## Bug fixes
+
+- **Review's "Incomplete Sections" deep link now scrolls to the field.** The deep link from the review checklist opens the correct section and jumps to the exact missing input, instead of landing at the top of the page.
+- **Attorney action buttons respond again.** Buttons on the attorney case view (assign, unassign, request changes) that had gone unresponsive after a recent refactor now fire on the first click.
+- **Legacy evidence forms save cleanly.** Older evidence entry forms no longer swallow the save action when a field was pre-populated from a document upload.
+
+## Breaking change
+
+- **API status value `submitted` renamed to `filed`; new `in-review` value added.** The v1 case-status contract (`GET /api/v1/petitions/{id}/status`, `GET /api/v1/petitions`, and the MCP `get_case_status`/`list_cases` tools) now returns `displayStatus: "filed"` where it previously returned `"submitted"`, and adds `"in-review"` to distinguish a case sitting with LegalOS from one still being assembled by the client. Update any integration that switches on these values before upgrading — mismatched clients will see cases reported as unavailable.
+
+  ```json
+  {
+    "displayStatus": "filed",
+    "waitingOn": "uscis"
+  }
+  ```
+
+</Update>
+
 <Update label="August 4, 2026" description="Week of August 3">
 
 ## Bug fixes
