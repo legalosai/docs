@@ -3,6 +3,35 @@ title: "Changelog"
 description: "Product updates and improvements from the LegalOS team."
 ---
 
+<Update label="August 10, 2026" description="Week of August 10">
+
+## New features
+
+**Unified case status across the platform.** Every petition now carries a single, persisted status snapshot that drives the same view for staff and clients.
+
+- A **"ball in court"** badge on each case shows who owes the next action — the client, the attorney, or the signatory — so it's immediately clear where a case is stuck.
+- A new **staff work queue** surfaces cases that need attention and hides those that are waiting on client work, so you can triage without hunting through the full list.
+- The `Waiting On` column and the badge on the same row now agree, and cases past the signature window no longer claim client work is outstanding.
+- Existing petitions are backfilled automatically. Terminal states (withdrawn, archived) are excluded from the queue.
+
+**LegalOS MCP server for Claude.** The production Model Context Protocol server is live, letting Claude read case status, requirements, and intake data on your behalf.
+
+- **Credential-free install** — connect Claude to LegalOS without pasting API keys.
+- New tools include `get_case_status` and `list_cases`, backed by the same unified status model as the app.
+- Clearer auth-rejection diagnostics tell you exactly why a connection was refused instead of a generic failure.
+
+## Updates
+
+- **`filed` replaces `submitted` in the case-status API.** The public case-status contract renames `submitted` to `filed` and adds a new `in-review` value. Filed cases now read "Filed" everywhere — badge, list, and `GET /api/v1/petitions/{id}/status`. If you consume the case-status API directly, update any code that matches on `submitted`.
+- **RFE notice transcription is more reliable.** RFE (Request for Evidence) notice PDFs are now transcribed with OpenAI instead of relying on a text layer being present, so scanned or image-based notices extract cleanly and downstream RFE analysis runs on the full text.
+- **Cleaner evidence sidebar.** The "Get Legal Guidance" card has been removed from the evidence sidebar to reduce clutter on the criteria workflow.
+
+## Bug fixes
+
+- **Dead UI controls now work.** Fixed the review deep-link, several attorney-side buttons, and the legacy evidence forms that had stopped responding to clicks. Every control on those surfaces is wired back up.
+
+</Update>
+
 <Update label="August 4, 2026" description="Week of August 3">
 
 ## Bug fixes
