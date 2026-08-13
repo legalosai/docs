@@ -3,6 +3,23 @@ title: "Changelog"
 description: "Product updates and improvements from the LegalOS team."
 ---
 
+<Update label="August 13, 2026" description="Week of August 10">
+
+## New features
+
+**LegalOS MCP server is generally available.** The MCP server for Claude is now open to all customers by default. No allowlist, no per-user approval — connect Claude to LegalOS and start working.
+
+- **Zero-approval install.** Trusted Claude connector clients are provisioned automatically at registration, so end users no longer wait on an operator to enable access.
+- **Open-by-default access.** Access is now allow-by-default with block-by-exception, replacing the previous pilot allowlist. Per-operation gates, rate limits, consent prompts, and row-level security are unchanged.
+- **Recommenders parity with the app.** MCP recommenders tools now respect the same launch-eligibility rules as the chat and form surfaces, so what Claude can do lines up with what the app can do on the same case.
+- **Evidence read/write hardening.** Evidence tools now work cleanly against protected upstream environments, with tighter URL handling on read and write.
+
+## Bug fixes
+
+- **No more spurious `409 revision_mismatch` on intake writes.** Beneficiary intake writes now return the recomputed revision token in the response, so a client's next optimistic write no longer fails with a stale-revision conflict. Previously, updating a field like a phone number and then updating a second field back-to-back could hit a 409 on the second write.
+
+</Update>
+
 <Update label="August 12, 2026" description="Week of August 10">
 
 ## New features
