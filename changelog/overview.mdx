@@ -3,6 +3,24 @@ title: "Changelog"
 description: "Product updates and improvements from the LegalOS team."
 ---
 
+<Update label="August 13, 2026" description="Week of August 10">
+
+## New features
+
+**MCP server general availability.** The LegalOS MCP server for Claude is now open to all pilot users, and installing the connector no longer requires a manual approval step.
+
+- **Zero-approval install.** When you add the LegalOS connector in Claude, the client is provisioned automatically at registration. No API keys, no client IDs, no admin ticket.
+- **Open access by default.** Access is now default-allow with block-by-exception, so any pilot user can connect Claude to LegalOS without being individually allowlisted first.
+- **Expanded tool surface.** Beyond the initial read tools (`list_cases`, `get_case_status`, `list_missing_requirements`), the connector now exposes tools for FAQs, document suggestions, recommenders, evidence criteria, and beneficiary intake reads and writes.
+- The kill switch, per-operation gates, rate limits, and consent prompts are unchanged.
+
+## Bug fixes
+
+- **No more spurious `409 revision_mismatch` on sequential intake writes.** Beneficiary intake write responses now return the revision token that reflects the post-write state, so a follow-up optimistic write that echoes that token succeeds on the first try. Previously the response returned a pre-recompute token and the next write was rejected as stale until the client re-fetched.
+- **Recommenders tools respect letters launch-eligibility.** The MCP recommenders tools now check the same launch-eligibility rules as the chat and form surfaces, so a case that isn't eligible for letters no longer returns partial recommender data through the connector.
+
+</Update>
+
 <Update label="August 12, 2026" description="Week of August 10">
 
 ## New features
