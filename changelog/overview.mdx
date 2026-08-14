@@ -18,6 +18,7 @@ description: "Product updates and improvements from the LegalOS team."
 
 - **No more spurious `409 revision_mismatch` on sequential intake writes.** Beneficiary intake write responses now return the revision token that reflects the post-write state, so a follow-up optimistic write that echoes that token succeeds on the first try. Previously the response returned a pre-recompute token and the next write was rejected as stale until the client re-fetched.
 - **Recommenders tools respect letters launch-eligibility.** The MCP recommenders tools now check the same launch-eligibility rules as the chat and form surfaces, so a case that isn't eligible for letters no longer returns partial recommender data through the connector.
+- **Linking a document no longer hides existing documents of the same type.** Linking a document to a company or person previously demoted every other document of the same type on that entity to "not current," silently hiding legitimate records. New links now leave siblings alone, and rows already hidden by the old behavior have been restored by a one-time backfill.
 
 </Update>
 
