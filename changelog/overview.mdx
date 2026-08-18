@@ -3,6 +3,24 @@ title: "Changelog"
 description: "Product updates and improvements from the LegalOS team."
 ---
 
+<Update label="August 18, 2026" description="Week of August 17">
+
+## New features
+
+**LegalOS MCP server now works with ChatGPT.** You can add LegalOS as a ChatGPT connector without waiting on an operator to approve the install.
+
+- Zero-approval install parity with Claude. ChatGPT's connector uses a different per-connection redirect than Claude, and the DCR trust check now recognizes it, so the connector registers on first use instead of failing with "Application not approved."
+- Per-operation gates, rate limits, consent prompts, and row-level security are unchanged.
+
+**Form I-129S for blanket L-1 petitions.** L-1A and L-1B petitions can now generate Form I-129S (Nonimmigrant Petition Based on Blanket L Petition) alongside the base I-129.
+
+- Available for employers filing under an already-approved blanket L. Since most L-1 filings aren't blanket, I-129S is offered as a conditional add-on rather than a default form — an admin adds it to a petition the same way as I-907.
+- New L-1 intake fields cover the blanket petition (approval receipt, dates, classification) and any offsite third-party worksite where the beneficiary will be supervised.
+- Auto-generation maps intake to the current I-129S PDF, with the signatory block placed on Page 6, Part 7, #6.
+- Company signatories now capture a mobile number in addition to the existing daytime phone, to fill the I-129S signatory contact fields.
+
+</Update>
+
 <Update label="August 14, 2026" description="Week of August 10">
 
 ## Bug fixes
