@@ -3,6 +3,17 @@ title: "Changelog"
 description: "Product updates and improvements from the LegalOS team."
 ---
 
+<Update label="August 19, 2026" description="Week of August 17">
+
+## Bug fixes
+
+- **Onboarding wizard no longer fails silently.** Completing onboarding could return you to the start with no toast, no inline error, and no console output when a hidden field was invalid. Blocked submits and blocked **Next** clicks now always surface the offending field with an inline error, and the wizard jumps to the step that owns it.
+- **Scraped company phone numbers now import cleanly.** When LegalOS scraped a company website during onboarding, the raw phone string was written into a field that only accepted E.164 and was then rejected without explanation. Extraction now pulls the first valid number out of the scraped text and normalizes it before saving.
+- **Website scrape no longer overwrites fields you've already edited.** Onboarding pre-fill from a website scrape is fill-only. If you've typed or corrected a value, a later scrape leaves it alone.
+- **Company step accepts zero US employees.** Petitioners with no US-based staff can now submit the company step, which previously rejected `0` as invalid.
+
+</Update>
+
 <Update label="August 18, 2026" description="Week of August 17">
 
 ## New features
