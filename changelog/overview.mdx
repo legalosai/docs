@@ -3,6 +3,20 @@ title: "Changelog"
 description: "Product updates and improvements from the LegalOS team."
 ---
 
+<Update label="August 19, 2026" description="Week of August 17">
+
+## Updates
+
+- **Shorter "Why this matters" prompt on Original Contributions.** The Original Contributions evidence form now shows a tighter placeholder explaining what to write, so the guidance stays out of the way once you start typing.
+
+## Bug fixes
+
+- **Onboarding wizard now reports why it can't submit.** Finishing onboarding could previously do nothing at all — no toast, no inline error — when a hidden field failed validation. Blocked submits and Next now always explain what needs to change, and the offending field is highlighted on the step you land on.
+- **Website scrape no longer wipes out a phone number.** When onboarding pre-fills from a company website, the extracted phone number is now normalized before it's written to the form, so it lands in the field instead of silently failing validation. Auto-fill is also fill-only: it won't overwrite a value you've already corrected.
+- **Zero U.S. employees is a valid answer on the company step.** Petitioners with no U.S. staff can now complete the company step of onboarding, which previously refused to submit.
+
+</Update>
+
 <Update label="August 18, 2026" description="Week of August 17">
 
 ## New features
