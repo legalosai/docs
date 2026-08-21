@@ -3,6 +3,31 @@ title: "Changelog"
 description: "Product updates and improvements from the LegalOS team."
 ---
 
+<Update label="August 21, 2026" description="Week of August 17">
+
+## New features
+
+**Uploads now fill in the intake automatically.** Documents a beneficiary uploads during onboarding — passport, I-797, I-94, resume, and other supporting files — are read as soon as they're attached, and the extracted values are written straight into the matching intake fields. This replaces the previous flow, where autofill was hidden behind an "Auto-fill from Documents" button and a review dialog.
+
+- Available on every visa family LegalOS supports.
+- Fields populated from a document show a **From documents** badge next to the value, so it's clear which answers came from an upload and which were typed by hand.
+- Autofill only fills blanks. A value the beneficiary already typed is never overwritten, and employment and education history is deduped rather than duplicated when a new document confirms an existing row.
+- The instructions-acknowledgement checkbox that used to gate onboarding is gone. Terms acceptance is now a single passive line on the set-password screen.
+
+## Updates
+
+- **URL evidence screenshots are back.** Submitting a URL as evidence now captures a full-page screenshot again, stores it alongside the extracted text, and slices it into Letter-sized pages in the admin evidence PDF. Entries whose scrape fails to enqueue are now marked failed instead of sitting at "Processing" indefinitely.
+- **Slack notification when a client uploads a signed document.** LegalOS posts to `#app-submission` when a client completes a signed-document upload, including the applicant, form label, visa type, company, and a deep link to the case. Admin override uploads are intentionally excluded, and the notification never blocks or delays the upload response.
+- **Demo accounts moved out of the main admin views.** `/admin/petitions` and `/admin/users` now hide accounts and companies with `@*.test` email domains. A new **`/admin/demo`** page lists them with the same tables and actions, so real customer data is easier to scan without losing access to demo cases.
+
+## Bug fixes
+
+- **Blocked "Complete Onboarding" now keeps its error message.** Finishing onboarding could navigate you to the offending step and then immediately clear the error before you saw which field was wrong. The field that blocked submission now stays flagged when you land on the step.
+- **Documents attached during onboarding are now read.** A batch of documents added through the onboarding completion path were being marked complete without ever being extracted or classified, which hid them from search, autofill, and RFE analysis. An hourly reconciliation task now catches any document that lands without classification and re-runs processing, and duplicate uploads are detectable by content hash. The one-time backfill has already run against production.
+- **Platform-RBAC staff can create petitions and edit person data again.** Ops users provisioned only through platform RBAC (no `staff` account type) were passing the app-level admin gate and then being denied by row-level security on every petition creation and person-data write. All staff checks now route through a single helper, so platform-RBAC-only staff have the access their role grants.
+
+</Update>
+
 <Update label="August 19, 2026" description="Week of August 17">
 
 ## Updates
