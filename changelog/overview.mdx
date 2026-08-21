@@ -3,6 +3,29 @@ title: "Changelog"
 description: "Product updates and improvements from the LegalOS team."
 ---
 
+<Update label="August 21, 2026" description="Week of August 17">
+
+## New features
+
+**Intake auto-fills from uploaded documents.** Uploading a beneficiary document — passport, I-797A, I-94, resume — now populates the intake automatically, with no manual "Auto-fill from Documents" button or review dialog to click through. Available on all eight visa families.
+
+- Every value that came from a document is tagged with a **"From documents"** badge on the input, so you can see at a glance what was extracted versus what was typed.
+- Auto-fill is fill-only and additive: values you've already typed are never overwritten, and employment and education rows are deduped instead of duplicated.
+- The instructions-acknowledgement checkbox has been removed from onboarding. Terms acceptance is now a single passive line on the set-password screen.
+
+## Updates
+
+- **Demo accounts have their own admin view.** Test companies and users (`@*.test`) are filtered out of `/admin/petitions` and `/admin/users` and moved to a new **`/admin/demo`** page that reuses the same tables and actions, so the main admin views only show real customers.
+
+## Bug fixes
+
+- **Documents on live cases are now actually processed.** An audit found 209 documents attached to real cases that reported themselves finished but had no extracted text, making them invisible to search, autofill, and RFE analysis. The worst affected were company formation documents and EIN letters on new cases. All 209 have been backfilled, and an hourly reconciler now catches any document that finishes upload without classification so this can't silently recur. Duplicate uploads are also detectable going forward.
+- **URL evidence screenshots work again.** Adding a URL as evidence was silently failing the entire scrape — not just the screenshot — because of an incompatibility with the upstream scraper API. URL evidence now scrapes cleanly, full-page screenshots are stored and sliced into Letter-sized pages in the admin evidence PDF, and a failed enqueue marks the entry **Failed** instead of leaving it stuck on **Processing**.
+- **Platform-RBAC ops users can create and edit petitions.** Staff provisioned only through platform RBAC (without a legacy `staff` account type) were passing the app-level admin gate but then getting denied on every person-data write and petition creation. All 16 affected row-level policies and `create_petition` now recognize platform-RBAC staff, so ops users can do their work end-to-end.
+- **Blocked "Complete Onboarding" keeps its error message.** Follow-up to last week's onboarding-submit fix: a blocked submit was navigating to the offending step and then immediately clearing the error, so the field arrived unmarked. The error and highlight now persist on the step you land on.
+
+</Update>
+
 <Update label="August 19, 2026" description="Week of August 17">
 
 ## Updates
