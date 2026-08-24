@@ -3,6 +3,14 @@ title: "Changelog"
 description: "Product updates and improvements from the LegalOS team."
 ---
 
+<Update label="August 24, 2026" description="Week of August 24">
+
+## Bug fixes
+
+- **Document processing reconciler runs cleanly against production scale.** The hourly reconciler that catches documents finishing upload without classification, and the daily orphan-document sweep, had been failing on production-sized working sets since last week's release. Both now handle the full backlog. The next hourly run will pick up the 12 documents currently waiting on text extraction and enqueue them for processing; steady state returns to zero afterward. The orphan sweep stays report-only.
+
+</Update>
+
 <Update label="August 21, 2026" description="Week of August 17">
 
 ## New features
