@@ -3,6 +3,16 @@ title: "Changelog"
 description: "Product updates and improvements from the LegalOS team."
 ---
 
+<Update label="September 1, 2026" description="Week of August 31">
+
+## Bug fixes
+
+- **Deleting a petition can no longer delete documents belonging to another active petition.** Deleting a draft petition could permanently destroy stored files for documents still attached to a person's other active petition. Petition deletion now archives records instead of destroying stored files, so no delete action can wipe out filing evidence that another case still needs.
+- **Removing an evidence file no longer destroys the stored document.** Removing a file from an evidence section now detaches it from the section while the underlying document is kept, closing a second path that could leave a case pointing at a missing file.
+- **Bulk evidence downloads report missing files instead of a partial ZIP.** "Download all evidence" and per-section downloads previously showed a success message even when some documents couldn't be included. They now raise an error that names the affected files, so a partial download can't pass as complete.
+
+</Update>
+
 <Update label="August 31, 2026" description="Week of August 31">
 
 ## Updates
