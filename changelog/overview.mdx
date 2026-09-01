@@ -3,6 +3,16 @@ title: "Changelog"
 description: "Product updates and improvements from the LegalOS team."
 ---
 
+<Update label="September 1, 2026" description="Week of August 31">
+
+## Bug fixes
+
+- **Deleting a petition can no longer remove files belonging to another petition.** Petition deletion previously removed stored document files gathered per person rather than per petition, so deleting a draft could destroy files still in use by that person's other active petition. Deletion decisions now live in one place, the database's soft-delete cascade, which only cascades when the person has no other active petition. No user-initiated delete destroys stored files anymore.
+- **Removing an evidence file keeps the underlying file recoverable.** Removing a file from an evidence entry now soft-deletes the record instead of permanently destroying the stored file, so an accidental removal no longer means irreversible loss.
+- **Bulk evidence downloads flag missing files instead of silently shrinking the ZIP.** "Download All" and per-section evidence downloads previously dropped any document whose stored file could not be found and reported success over a partial package. Both downloads now raise an error naming each missing file, so you know exactly what the package does not contain.
+
+</Update>
+
 <Update label="August 31, 2026" description="Week of August 31">
 
 ## Updates
