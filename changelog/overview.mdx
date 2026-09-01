@@ -8,6 +8,9 @@ description: "Product updates and improvements from the LegalOS team."
 ## Updates
 
 - **New users receive a welcome email.** Completing account setup by setting your password now triggers a one-time welcome email. It's sent at most once per user, respects your email notification preferences, and can never block or fail the account-setup step itself.
+- **Product analytics hardened against PII.** Session replay and autocapture now initialize only in production and ship behind rollout flags. Every form input is masked in recordings, document surfaces (viewers, previews, thumbnails, generated letters) are excluded from replay entirely, and audited person, document, and petition data rendered as text is masked.
+- **MCP tool calls record metadata-only usage events.** Each MCP tool call from Claude or ChatGPT now logs the tool name, outcome, and duration so LegalOS can report on connector usage. Arguments, request bodies, and case content are never recorded.
+- **Outbound email is fail-closed outside production.** Staging and preview environments can no longer send email to customers. Non-production sends are blocked unless the recipient is on an explicit team allowlist, and every skipped send is recorded.
 
 ## Bug fixes
 
