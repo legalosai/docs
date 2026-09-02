@@ -3,6 +3,18 @@ title: "Changelog"
 description: "Product updates and improvements from the LegalOS team."
 ---
 
+<Update label="September 2, 2026" description="Week of August 31">
+
+## Updates
+
+- **MCP usage events now reliably include a request summary.** Metadata-only usage events for MCP tool calls from Claude and ChatGPT now consistently capture a short summary of what was asked, improving connector usage reporting. Arguments, request bodies, and case content are still never recorded.
+
+## Bug fixes
+
+- **Production analytics and client-side error reporting initialize again.** A production build configuration gap was leaving product analytics and client-side error monitoring out of the production app entirely, so client-side errors went uncaptured. Both now initialize on production as intended. All existing privacy protections — input masking, document-surface replay exclusions, and production-only gating — are unchanged, and staging and preview environments keep telemetry off.
+
+</Update>
+
 <Update label="September 1, 2026" description="Week of August 31">
 
 ## Bug fixes
